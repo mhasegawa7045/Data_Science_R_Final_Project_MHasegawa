@@ -1,8 +1,9 @@
 # Data Description: Hollywood movies data
 
-We use the `HollywoodMovies.csv` dataset available at 
-<https://github.com/reisanar/datasets/blob/master/HollywoodMovies.csv>
+We use the `netflixShows.csv` dataset available at 
+<https://raw.githubusercontent.com/reisanar/datasets/master/netflixShows.csv>
 
-This dataset includes information of Hollywood from 2007 to 2013. 
+This dataset is a collection of original Netflix shows with age ratings and user rating size. 
 
-The data fields included are: Movie,	LeadStudio,	RottenTomatoes,	AudienceScore,	Story,	Genre,	TheatersOpenWeek,	OpeningWeekend,	BOAvgOpenWeekend,	DomesticGross,	ForeignGross,	WorldGross,	Budget,	Profitability,	OpenProfit, and	Year
+The data fields included are: title,	rating,	ratingLevel,	ratingDescription,	release year,	user rating score, and	user rating size
+
