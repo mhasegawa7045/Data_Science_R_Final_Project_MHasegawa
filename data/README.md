@@ -1,10 +1,8 @@
-# Data Description: IMDB popular movies data
+# Data Description: Hollywood movies data
 
-We use the `IMDB_movies.csv` dataset available at 
-<https://github.com/reisanar/datasets/blob/master/IMDB_movies.csv>
+We use the `HollywoodMovies.csv` dataset available at 
+<https://github.com/reisanar/datasets/blob/master/HollywoodMovies.csv>
 
-This dataset includes information of popular movies on IMDB in the last 10 years. 
+This dataset includes information of Hollywood from 2007 to 2013. 
 
-The data fields included are: Title, Genre, Description, Director, Actors, Year, Runtime, Rating, Votes, Revenue, Metascore (score of the movie on the metacritic website)
-
-Below we include some basic statistics for this datasets, including dimensions and range of years:
+The data fields included are: Movie,	LeadStudio,	RottenTomatoes,	AudienceScore,	Story,	Genre,	TheatersOpenWeek,	OpeningWeekend,	BOAvgOpenWeekend,	DomesticGross,	ForeignGross,	WorldGross,	Budget,	Profitability,	OpenProfit, and	Year
