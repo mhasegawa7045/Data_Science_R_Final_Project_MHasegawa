@@ -1,4 +1,4 @@
-# Final Project for Intro to Data Science: Netflix Show Data Analysis
+# Final Project for Intro to Data Science: IMDB Movies Data Analysis
 
 ## Spring 2020
 
@@ -7,7 +7,6 @@ Team members:
 - [Marie Hasegawa](mailto:mhasegawa7045@floridapoly.edu)
 
 
-
-This project will investigate the relations between age restriction ratings and user ratings of popular Netflix Shows in recent years.
+This project will investigate the how genre, directors, and actors affect user ratings of recent, popular movies.
 The project will be using the data available at: 
-<https://raw.githubusercontent.com/reisanar/datasets/master/netflixShows.csv> 
+<https://github.com/reisanar/datasets/blob/master/IMDB_movies.csv> 
