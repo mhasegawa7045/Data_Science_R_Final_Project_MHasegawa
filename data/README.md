@@ -1,9 +1,8 @@
-# Data Description: Hollywood movies data
+# Data Description: IMDB movies data
 
-This project will be using the `netflixShows.csv` dataset available at 
-<https://raw.githubusercontent.com/reisanar/datasets/master/netflixShows.csv>
+This project will be using the `IMDB_movies.csv` dataset available at 
+<https://github.com/reisanar/datasets/blob/master/IMDB_movies.csv>
 
-This dataset is a collection of original Netflix shows involving age restriction ratings and user ratings. 
+This dataset is a collection of movies rated in IMDB that contains information about their genres, actors, and directors. 
 
-The data fields included are: title,	rating,	ratingLevel,	ratingDescription,	release year,	user rating score, and	user rating size
-
+The data fields included are: Rank,	Title,	Genre,	Description,	Director,	Actors,	Year,	Runtime (Minutes),	Rating,	Votes,	Revenue (Millions), and	Metascore.
