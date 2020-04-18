@@ -1,11 +1,37 @@
 ---
-title: "Project Proposal"
-output: html_notebook
+title: 'IMDb Movie Bias: Project Proposal'
+author: "Marie Hasegawa - `mhasegawa7045@floridapoly.edu`"
+output:
+  html_document:
+    df_print: paged
 ---
 
-## Section 1. Introduction
+## Section 1: Introduction
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(lubridate)
+IMDB <- read_csv("https://raw.githubusercontent.com/reisanar/datasets/master/IMDB_movies.csv")
+```
 
-## Section 2. Data Analysis Plan
+The box office industry is one of the biggest global markets in the entertainment industry. According to `IMDbPro`,the industry has a yearly average ` box office revenue` of around 11 to 14 million dollars and a yearly `total gross` of around 9 to 12 billion dollars.
 
-## Section 3. Data
+The purpose of the project is to see how a movie's`genre`, `runtime`, `director`, and `actors` can affect the success of a movie and create bias ratings, which will be based on the given `rating`, `votes`, `revenue`, and `metascore`. This project will be using the `IMDB_movies.csv` dataset, which is available in this link, [IMDB_movies.csv](https://github.com/reisanar/datasets/blob/master/IMDB_movies.csv) and in `Section 3: Data`.
 
+The dataset is a collection of popular movies rated on IMDb for the past decade. The data fields included are `Rank`, `Title`, `Genre`, `Description`, `Director`, `Actors`, `Year`, `Runtime (Minutes)`, `Rating`, `Votes`, `Revenue (Millions)`, and `Metascore`. `IMDB_movies.csv` was provided by Professor Rei Sanchez-Arias under his GitHub account, `reisanar`. The dataset only contains 1000 movies (rows) from 2006 to 2016, so movies past 2006 and from the 20th century will take no part in this analysis. 
+
+
+## Section 2: Data Analysis Plan
+Create new dataframes from `IMDB_movies.csv` to answer the following theories:
+
+- Finding out how `ratings`, `votes`, and `metascore` are affected by who the `director` and `actors` are in the movie by analyzing each `director's` and `actor's` frequency of highly rated movies.
+- See how the length of the `runtime` can affect the `rating`, `votes`, and `metascore` of a movie.
+- Find out which `genre` has the highest frequency of highly rated movies.
+- See if a high `revenue` will lead to a high `rating`, `votes`, and `metascore`, and vice versa.
+- Deduce if `rating`, `votes`, and `metascore` correlates with each other.
+
+
+
+## Section 3: Data
+```{r}
+IMDB
+```
