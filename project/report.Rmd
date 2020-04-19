@@ -1,5 +1,6 @@
 ---
-title: "Final Report for Intro to Data Science"
+title: "Final Report for IMDb Movie Bias"
+author: "Marie Hasegawa - `mhasegawa7045@floridapoly.edu`"
 output: html_notebook
 ---
 
@@ -9,3 +10,41 @@ This is where the final project report write-up goes.
 Before you submit, make sure everything runs as expected.
 
 You can add sections as you see fit. Make sure you have a section called "Introduction" at the beginning and a section called "Conclusion" at the end. The rest is up to you!
+
+## Section 1: Introduction
+
+The box office industry is one of the biggest global markets in the entertainment industry. According to `IMDbPro`,the industry has a yearly average ` box office revenue` of around 11 to 14 million dollars and a yearly `total gross` of around 9 to 12 billion dollars.
+
+The purpose of the project is to see how a movie's`genre`, `runtime`, `director`, and `actors` can affect the success of a movie and create bias ratings, which will be based on the given `rating`, `votes`, `revenue`, and `metascore`. This project will be using the `IMDB_movies.csv` dataset, which is available in this link, [IMDB_movies.csv](https://github.com/reisanar/datasets/blob/master/IMDB_movies.csv) and in `Section 2: Data Analysis`.
+
+
+## Section 2: Data Analysis
+
+The dataset, `IMDB_movies.csv`, is a collection of popular movies rated on IMDb for the past decade. The data fields included are `Rank`, `Title`, `Genre`, `Description`, `Director`, `Actors`, `Year`, `Runtime (Minutes)`, `Rating`, `Votes`, `Revenue (Millions)`, and `Metascore`. `IMDB_movies.csv` was provided by Professor Rei Sanchez-Arias under his GitHub account, `reisanar`. The dataset only contains 1000 movies (rows) from 2006 to 2016, so movies past 2006 and from the 20th century will take no part in this analysis. 
+
+Ratings can be affected by who directed the movie and who starred in it. Directors and actors can create bias in `ratings` that conflict with `metascores`. This hypothesis will be tested by analyzing each `director's` and `actor's` frequency of highly rated movies.
+
+Out of all directors, 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
