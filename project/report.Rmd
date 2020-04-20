@@ -22,18 +22,27 @@ The purpose of the project is to see how a movie's`genre`, `runtime`, `director`
 
 The dataset, `IMDB_movies.csv`, is a collection of popular movies rated on IMDb for the past decade. The data fields included are `Rank`, `Title`, `Genre`, `Description`, `Director`, `Actors`, `Year`, `Runtime (Minutes)`, `Rating`, `Votes`, `Revenue (Millions)`, and `Metascore`. `IMDB_movies.csv` was provided by Professor Rei Sanchez-Arias under his GitHub account, `reisanar`. The dataset only contains 1000 movies (rows) from 2006 to 2016, so movies past 2006 and from the 20th century will take no part in this analysis. 
 
+
+
+
+- Finding out how `ratings`, `votes`, and `metascore` are affected by who the `director` and `actors` are in the movie by analyzing each `director's` and `actor's` frequency of highly rated movies.
+
 Ratings can be affected by who directed the movie and who starred in it. Directors and actors can create bias in `ratings` that conflict with `metascores`. This hypothesis will be tested by analyzing each `director's` and `actor's` frequency of highly rated movies.
 
 Based on average ratings and highest frequency of  
+
 ```{r}
 num_movies_by_director<-tally(group_by(IMDB,Director), sort=TRUE) %>%
   head(n=10)
+ggplot(data = num_movies_by_director, mapping = aes(x = reorder(Director, n), n)) +
+  ggtitle("Director's Movie Count w/ Highest Ratings") +
+  geom_bar(stat = "identity", color="black", fill="green") + coord_flip()
 
 IMDB_with_tally <- IMDB %>%
       arrange(desc(Rating)) %>%
       select(Title, Director, Actors, Rating, Metascore) %>% 
       group_by(Director) %>% 
-      mutate(count = n())
+      mutate(count_mov = n())
 ```
 ```{r}
 avg_rating_table<- IMDB %>% 
@@ -45,10 +54,21 @@ avg_rating_table<- IMDB %>%
 ggplot(data = avg_rating_table, mapping = aes(x = reorder(Director, avg_rating), avg_rating)) + 
   geom_bar(stat = "identity") + coord_flip()
 ```
-
 Out of all directors, `Christopher Nolan` is the most frequent director with the highest ratings from his movies: `The Dark Knight`, `Inception	`, `Interstellar`, `The Prestige`, and `The Dark Knight Rises`.  
 
 
+- Deduce if `rating` and `metascore` correlates with each other.
+```{r}
+RateVsMeta<-IMDB %>%
+  select(Title, Rating, Metascore) %>%
+  arrange(desc(Rating))
+RateVsMeta
+
+MetaVsRate<- IMDB %>%
+  select(Title, Rating, Metascore) %>%
+  arrange(desc(Metascore))
+MetaVsRate
+```
 
 
 
