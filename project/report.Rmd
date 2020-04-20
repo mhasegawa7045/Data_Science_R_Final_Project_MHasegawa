@@ -26,11 +26,24 @@ Ratings can be affected by who directed the movie and who starred in it. Directo
 
 Based on average ratings and highest frequency of  
 ```{r}
-IMDB %>%
-  arrange(desc(Rating)) %>%
-  select(Title, Director, Actors, Rating, Metascore) %>% 
-  group_by(Director) %>% 
-  mutate(count = n())
+num_movies_by_director<-tally(group_by(IMDB,Director), sort=TRUE) %>%
+  head(n=10)
+
+IMDB_with_tally <- IMDB %>%
+      arrange(desc(Rating)) %>%
+      select(Title, Director, Actors, Rating, Metascore) %>% 
+      group_by(Director) %>% 
+      mutate(count = n())
+```
+```{r}
+avg_rating_table<- IMDB %>% 
+  group_by(Director) %>%
+  summarize(avg_rating=mean(Rating, na.rm=TRUE)) %>%
+  arrange(desc(avg_rating)) %>%
+  head(n=10)
+
+ggplot(data = avg_rating_table, mapping = aes(x = reorder(Director, avg_rating), avg_rating)) + 
+  geom_bar(stat = "identity") + coord_flip()
 ```
 
 Out of all directors, `Christopher Nolan` is the most frequent director with the highest ratings from his movies: `The Dark Knight`, `Inception	`, `Interstellar`, `The Prestige`, and `The Dark Knight Rises`.  
