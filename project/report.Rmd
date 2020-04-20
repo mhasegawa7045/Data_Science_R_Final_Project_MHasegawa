@@ -69,6 +69,7 @@ MetaVsRate<- IMDB %>%
   arrange(desc(Metascore))
 MetaVsRate
 ```
+- See if a high `revenue` will lead to a high `rating`, `votes`, and `metascore`, and vice versa.
 
 
 
