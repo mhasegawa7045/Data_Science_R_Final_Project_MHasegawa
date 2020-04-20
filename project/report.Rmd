@@ -52,7 +52,7 @@ avg_rating_table<- IMDB %>%
   head(n=10)
 
 ggplot(data = avg_rating_table, mapping = aes(x = reorder(Director, avg_rating), avg_rating)) + 
-  geom_bar(stat = "identity") + coord_flip()
+  geom_bar(stat = "identity", color="black", fill="pink") + coord_flip()
 ```
 Out of all directors, `Christopher Nolan` is the most frequent director with the highest ratings from his movies: `The Dark Knight`, `Inception	`, `Interstellar`, `The Prestige`, and `The Dark Knight Rises`.  
 
