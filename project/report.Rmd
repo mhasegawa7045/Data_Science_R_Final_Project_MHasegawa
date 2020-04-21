@@ -29,44 +29,6 @@ The purpose of the project is to see how a movie's`genre`, `runtime`, `director`
 
 The dataset, `IMDB_movies.csv`, is a collection of popular movies rated on IMDb for the past decade. The data fields included are `Rank`, `Title`, `Genre`, `Description`, `Director`, `Actors`, `Year`, `Runtime (Minutes)`, `Rating`, `Votes`, `Revenue (Millions)`, and `Metascore`. `IMDB_movies.csv` was provided by Professor Rei Sanchez-Arias under his GitHub account, `reisanar`. The dataset only contains 1000 movies (rows) from 2006 to 2016, so movies past 2006 and from the 20th century will take no part in this analysis. 
 
-
-### Section 2.1: Finding out how `ratings` and `metascore` are affected by who the  `actors` are in the movie by analyzing each `actor's` frequency of highly rated movies.
-
-```{r}
-num_movies_by_actors<-tally(group_by(IMDB,Actors), sort=TRUE) %>%
-  head(n=10)
-num_movies_by_actors
-ggplot(data = num_movies_by_actors, mapping = aes(x = reorder(Actors, n), n)) +
-  ggtitle("Actor's Movie Count (n) w/ Highest Ratings") +
-  geom_bar(stat = "identity", color="black", fill="blue") + coord_flip()
-IMDB_with_Act_tally <- IMDB %>%
-      arrange(desc(Rating)) %>%
-      select(Title, Director, Actors, Rating, Metascore) %>% 
-      group_by(Actors) %>% 
-      mutate(count_mov = n())
-```
-```{r}
-avg_rating_Act_table<- IMDB %>% 
-  group_by(Actors) %>%
-  summarize(avg_rating=mean(Rating, na.rm=TRUE)) %>%
-  arrange(desc(avg_rating)) %>%
-  head(n=10)
-ggplot(data = avg_rating_Act_table, mapping = aes(x = reorder(Actors, avg_rating), avg_rating)) + 
-  geom_bar(stat = "identity", color="black", fill="pink") + coord_flip()
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### Section 2.1: Director's Effect on Rating and Metascore
 
 Ratings can be affected by who directed the movie and who starred in it. Directors and actors can create bias in movie's `ratings` that conflict with its `metascores`. This hypothesis will be tested by analyzing each `director's` and `actor's` frequency of highly rated movies in a data frame called, `num_movies_by_director`. This dataframe will be visualized in a Bar Chart called `Director's Movie Count (n) w/ High Ratings`, which `n` represents the number of movies and `reorder(Director, n)` lists the `Directors` who made the most movies.
@@ -108,22 +70,6 @@ ggplot(data = avg_meta_Dir_table, mapping = aes(x = reorder(Director, avg_meta),
   geom_bar(stat = "identity", color="black", fill="purple") + coord_flip()
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### Section 2.2: Rating Vs Metascore
 `Ratings` and `Metascore` are not exclusively equivalent, since `Ratings` are made by ordinary people while `Metascores` are made by licensed critics. This idea will be explored in the dataframes---`RateVsMeta`, which is arranged in descending `Rating`, and `MetaVsRate`, which is arranged in descending `Metascore`. Let this project assume that a `Rating` of 10 is equivalent to a `Metascore` of 100.
 
@@ -148,11 +94,7 @@ ggplot(data = RateVsMeta, aes(x = Rating, y = `Metascore`)) +
   geom_smooth() +
   ggtitle("Rating Vs Metascore Scatter Plot") 
 
-
 ```
-
-
-
 
 ### Section 2.3: Runtime's Effect on Rating and Metascore
 A movie's `Rating` and `Metascore` can be affected by the length of a movie i.e. a movie's `Runtime`. A longer `Runtime` allows a movie to explore its story more organically and are less likely to cut corners in order to fit the `Runtime`. Yet, an extended `Runtime` can make a movie's storyline lengthy and overdrawn, which can bring lower `Ratings` and `Metascores`.
@@ -175,20 +117,6 @@ ggplot(data = RuntimeVsRateVsMeta, aes(x = `Runtime (Minutes)`, y = Metascore)) 
   geom_smooth()
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### Section 2.4: Rating's and Metascore's Effect on Revenue
 ```{r}
 RateVsMetaVsRevenue<-IMDB %>%
@@ -205,21 +133,3 @@ ggplot(data = RateVsMetaVsRevenue, aes(x = Metascore, y = `Revenue (Millions)`))
 ```
 
 ## Section 3: Conclusion
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
