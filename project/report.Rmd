@@ -154,6 +154,65 @@ ggplot(data = RateVsMeta, aes(x = Rating, y = `Metascore`)) +
 
 
 
+### Section 2.3: Runtime's Effect on Rating and Metascore
+A movie's `Rating` and `Metascore` can be affected by the length of a movie i.e. a movie's `Runtime`. A longer `Runtime` allows a movie to explore its story more organically and are less likely to cut corners in order to fit the `Runtime`. Yet, an extended `Runtime` can make a movie's storyline lengthy and overdrawn, which can bring lower `Ratings` and `Metascores`.
+
+This idea will be explored with a dataframe called `RuntimeVsRateVsMeta`two scatter plots---`Runtime Vs Rating Scatterplot` and `Runtime Vs Metascore Scatterplot`. 
+```{r}
+RuntimeVsRateVsMeta<-IMDB %>%
+  select(Title, `Runtime (Minutes)`, Rating, Metascore) %>%
+  arrange(desc(`Runtime (Minutes)`))
+RuntimeVsRateVsMeta
+
+ggplot(data = RuntimeVsRateVsMeta, aes(x = `Runtime (Minutes)`, y = Rating)) + 
+  ggtitle("Runtime Vs Rating Scatterplot") +
+  geom_point() +
+  geom_smooth()
+
+ggplot(data = RuntimeVsRateVsMeta, aes(x = `Runtime (Minutes)`, y = Metascore)) + 
+  geom_point() +
+  ggtitle("Runtime Vs Metascore Scatterplot") +
+  geom_smooth()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Section 2.4: Rating's and Metascore's Effect on Revenue
+```{r}
+RateVsMetaVsRevenue<-IMDB %>%
+  select(Title, `Revenue (Millions)`, Rating, Metascore) %>%
+  arrange(desc(`Revenue (Millions)`))
+RateVsMetaVsRevenue
+
+ggplot(data = RateVsMetaVsRevenue, aes(x = Rating, y = `Revenue (Millions)`)) + 
+  geom_point() +
+  geom_smooth()
+ggplot(data = RateVsMetaVsRevenue, aes(x = Metascore, y = `Revenue (Millions)`)) + 
+  geom_point() +
+  geom_smooth()
+```
+
+## Section 3: Conclusion
+
+
+
+
+
+
+
+
 
 
 
