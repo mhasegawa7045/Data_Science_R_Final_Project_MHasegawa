@@ -4,7 +4,7 @@
 The dataset, ***IMDB_movies.csv***, is a collection of popular movies rated on IMDb for the past decade with 12 data fields:
 - `Rank` 
 - `Title`
--`Genre`
+- `Genre`
 - `Description`
 - `Director`
 - `Actors`
