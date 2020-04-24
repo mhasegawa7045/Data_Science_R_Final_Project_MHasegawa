@@ -1,5 +1,6 @@
 # Data Description: IMDB movies data
 
+
 The dataset, ***IMDB_movies.csv***, is a collection of popular movies rated on IMDb for the past decade. 
 
 The data fields included are `Rank`, `Title`, `Genre`, `Description`, `Director`, `Actors`, `Year`, `Runtime (Minutes)`, `Rating`, `Votes`, `Revenue (Millions)`, and `Metascore`. 
