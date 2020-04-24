@@ -6,7 +6,4 @@ Team members:
 
 - [Marie Hasegawa](mailto:mhasegawa7045@floridapoly.edu)
 
-
-This project will investigate the how genre, directors, and actors affect user ratings of recent, popular movies.
-The project will be using the data available at: 
-<https://github.com/reisanar/datasets/blob/master/IMDB_movies.csv> 
+The purpose of the project is to see how a movie's  `Rating`, `Director`, `Actors`, `Genre`, `Metascore`, `Runtime`, and`Revenue`, and  can affect the success of a movie and create bias. This project will be using the **IMDB_movies.csv** dataset, which is available in this link, [IMDB_movies.csv](https://github.com/reisanar/datasets/blob/master/IMDB_movies.csv).
