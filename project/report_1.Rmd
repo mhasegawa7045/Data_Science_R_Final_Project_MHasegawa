@@ -1,17 +1,19 @@
 ---
 title: "Final Report for IMDb Movie Bias"
 author: "Marie Hasegawa - `mhasegawa7045@floridapoly.edu`"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
 ---
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/500px-IMDB_Logo_2016.svg.png)
 
 ## Section 1: Introduction
 
-The box office industry is one of the largest global markets in the entertainment industry. According to **IMDbPro**,the industry has a `yearly average box office revenue` of around ***11 to 14 million dollars*** and a `yearly total gross` of around ***9 to 12 billion dollars***.
+The box office industry is one of the largest global markets in the entertainment industry. According to **IMDbPro**,the industry has an `annual average box office revenue` of around ***11 to 14 million dollars*** and a `yearly total gross` of around ***9 to 12 billion dollars***.
 
 The purpose of the project is to answer two questions:
 
-* How does `Ratings`, `Directors`, `Actors`, `Genres`, `Metascores`, `Runtimes`, and`Revenue` affect the success of a movie and create bias reviews?
+* How does `Ratings`, `Directors`, `Actors`, `Genres`, `Metascores`, `Runtimes`, and `Revenue` affect the success of a movie and create bias reviews?
 * Does `Ratings` correlate with `Metascores`, or do they conflict with each other?
 
 This project will be using the **IMDB_movies.csv** dataset, which is available in the link, [IMDB_movies.csv](https://github.com/reisanar/datasets/blob/master/IMDB_movies.csv) and in `Section 2: Data Analysis`.
@@ -23,7 +25,7 @@ This project will be using the **IMDB_movies.csv** dataset, which is available i
 * Section 2: Data Analysis
   * Section 2.1: Genre's Average rating
   * Section 2.2: Director's Effect on Rating
-  * Section 2.3: Rating Vs Metascore
+  * Section 2.3: Ratings Vs Metascores
   * Section 2.4: Runtime's Effect on Rating and Metascore
   * Section 2.5: Rating's and Metascore's Effect on Revenue
 * Section 3: Conclusion
@@ -37,7 +39,7 @@ IMDB
 ```
 The dataset, ***IMDB_movies.csv***, is a collection of the most popular movies rated on IMDb for the past decade. The data fields included are `Rank`, `Title`, `Genre`, `Description`, `Director`, `Actors`, `Year`, `Runtime (Minutes)`, `Rating`, `Votes`, `Revenue (Millions)`, and `Metascore`. **IMDB_movies.csv** was provided by ***Professor Rei Sanchez-Arias*** under his GitHub account, ***reisanar***. The dataset only contains 1000 movies (rows) from 2006 to 2016, so movies past 2006 and from the 20th century will take no part in this analysis. 
 
-This section will have 5 subsections: *Genre's Average rating, Director’s Effect on Rating and Metascore, Rating Vs Metascore, Runtime’s Effect on Rating and Metascore, and Rating’s and Metascore’s Effect on Revenue*. Each sub-section will illustrate how `Genre`, `Director`, `Revenue`, `Metascore`, `Runtime`, and `Revenue` affects a movie's box office success and creates bias reviews.
+This section will have 5 subsections: *Genre's Average rating, Director’s Effect on Rating and Metascore, Ratings Vs Metascores, Runtime’s Effect on Rating and Metascore, and Rating’s and Metascore’s Effect on Revenue*. Each sub-section will illustrate how `Genre`, `Director`, `Revenue`, `Metascore`, `Runtime`, and `Revenue` affects a movie's box office success and creates bias reviews.
 
 ### Section 2.1: Genre's Average Rating
 ```{r}
@@ -171,7 +173,7 @@ ggplot(data = avg_rating_Dir_table, mapping = aes(x = reorder(Director, avg_rati
 ```
 Based on the average `Ratings` and highest frequency of movies, ***Christopher Nolan*** is the most frequent director with one of the highest `Ratings` from his 5 movies: *The Dark Knight, Inception	, Interstellar, The Prestige, and The Dark Knight Rises*. The `Director` ranked 9th in the data frame, **Director's Movie Count (n) w/ Highest Ratings**, and 2nd in the data frame, **Director's Average Rating**.
 
-However, one of the movies (***The Dark Knight Rises***) is a sequel of the other and is based on a very popular *Marvel* icon, *Batman*, which could have compropmised the legitamacy of the `Ratings`.
+However, one of the movies (***The Dark Knight Rises***) is a sequel of the other and is based on a very popular *Marvel* icon, *Batman*, which could have compromised the legitimacy of the `Ratings`.
 ```{r}
 # Data Frame that lists Christopher Nolan's Movies by Descending Rating
 Christopher_Nolan<-IMDB %>%
@@ -182,7 +184,7 @@ Christopher_Nolan
 ```
 Choice of `Genre` could have played a role in *Nolan's* success, since his movies are categorized with one of the most popular movie `Genres`:
 
-* ***Drama*** has the **5th** highets Rating based on `Genre` (**6.953801**
+* ***Drama*** has the **5th** highest Rating based on `Genre` (**6.953801**
 )
 * ***Mystery*** has the **6th** highest `Rating` based on `Genre` (**6.886792**)
 * ***Crime*** has the **7th** highest `Rating` based on `Genre` (**6.786667**)
@@ -202,9 +204,9 @@ Christian_Bale<-IMDB %>%
 summarize(Christian_Bale,avgRat_Christ_Bale=mean(Rating, na.rm = TRUE))
 
 ```
-Therefore, the most successful `Director` based on frequncy of highly rated movies is ***Christian Nolan***. The reasons for his success is that one of his movies is a sequel of a previously successful movie, his `Genre` choice, and the `Actors` who played a role in his movies.  
+Therefore, the most successful `Director` based on frequency of highly rated movies is ***Christian Nolan***. The reasons for his success is that one of his movies is a sequel of a previously successful movie, his `Genre` choice, and the `Actors` who played a role in his movies.  
 
-### Section 2.3: Rating Vs Metascore
+### Section 2.3: Ratings Vs Metascores
 
 `Ratings` and `Metascore` are not exclusively equivalent, since `Ratings` are made by ordinary people while `Metascores` are made by licensed critics. This idea will be explored with two dataframes---**RateVsMeta**, which is arranged in descending `Rating`, and **MetaVsRate**, which is arranged in descending `Metascore`. Let this project assume that a `Rating` of 10 is equivalent to a `Metascore` of 100.
 ```{r}
@@ -236,7 +238,7 @@ ggplot(data = RateVsMeta, aes(x = Metascore, y = `Rating`)) +
   geom_smooth() +
   ggtitle("Metascore Vs Rating Scatter Plot") 
 ```
-The highest `Ratings` are more likely to have conflicting `Metascores`, since the points fall farther away from the regression line in the `Rating` coordinates of the scatter plot, **Rating Vs Metascore Scatter Plot**.  The highest `Metascores` are less likely to to have conflicting `Ratings`, since the points fall closer towards the regression line in the `Metascore` coordinates of the scatter plot, **Metascore Vs Rating Scatter Plot**.
+The highest `Ratings` are more likely to have conflicting `Metascores`, since the points fall farther away from the regression line in the `Rating` coordinates of the scatter plot, **Rating Vs Metascore Scatter Plot**.  The highest `Metascores` are less likely to have conflicting `Ratings`, since the points fall closer towards the regression line in the `Metascore` coordinates of the scatter plot, **Metascore Vs Rating Scatter Plot**.
 
 ### Section 2.4: Runtime's Effect on Rating and Metascore
 
@@ -274,11 +276,11 @@ ggplot(data = RuntimeVsRateVsMeta, aes(x = `Runtime (Minutes)`, y = Metascore)) 
 ```
 Based on the 2 scatter plots, the regression line for the scatter plot, **Runtime Vs Rating Scatterplot**, is more linear than the regression line of the other scatter plot, **Runtime Vs Metascore Scatterplot**. This shows that movies' `Ratings` increase steadily as a movie's `Runtime` increases. `Metascores` increase in scores as a movies' `Runtime` increases, but movies with a `Runtime` of around **100 minutes** are more prone to score poorly than any other `Runtime` duration. 
 
-Critics prefer a `Runtime` duration of more than **150 minutes**, and see it as a more fitting duration that doesn't disturb the quality of a movie. However, critics view movies with a `Runtime` of around **100 minutes** as a hindrance to the movie's quality, while normal reviewers believe that a longer `Runtime` duration increases the quality of a movie.
+Critics prefer a `Runtime` duration of more than **150 minutes** and see it as a more fitting duration that doesn't disturb the quality of a movie. However, critics view movies with a `Runtime` of around **100 minutes** as a hindrance to the movie's quality, while normal reviewers believe that a longer `Runtime` duration increases the quality of a movie.
 
 ### Section 2.5: Rating's and Metascore's Effect on Revenue
 
-Usually in the first week of a movie's premiere, `Ratings` and `Metascores` are given by first-time viewers who want to give their opinion  of the quality of the movie. Besides the advertisments and who the `Actors` and the `Directors` are, `Ratings` and `Metscores` can greatly affect how much viewership and `Revenue` a movie gains in the box office, since positive reviews encourage people to buy tickets while negative reviews causes people to steer clear from the movie theaters.
+Usually in the first week of a movie's premiere, `Ratings` and `Metascores` are given by first-time viewers who want to give their opinion  of the quality of the movie. Besides the advertisements and who the `Actors` and the `Directors` are, `Ratings` and `Metscores` can greatly affect how much viewership and `Revenue` a movie gains in the box office, since positive reviews encourage people to buy tickets while negative reviews causes people to steer clear from the movie theaters.
 ```{r}
 # Data Frame arranged by Descending Revenue with Rating and Metascore
 RateVsMetaVsRevenue<-IMDB %>%
@@ -311,9 +313,9 @@ ggplot(data = RateVsMetaVsRevenue, aes(x = Metascore, y = `Revenue (Millions)`))
   geom_smooth()  + 
   coord_cartesian(ylim = c(25, 110))
 ```
-In  the scatter plots, **Rating Vs Revenue Scatterplot**,`Revenue` exponetially grows as its `Ratings` increases. However, in the scatter plot **Metascore Vs Revenue Scatterplot**, `Revenue` has a logistic growth as `Metascore` increases. `Revenue` reaches a `Revenue` plateau of around ***$100 million*** with a `Metascore` range ***from 70 to 100***.
+In  the scatter plots, **Rating Vs Revenue Scatterplot**, `Revenue` exponentially grows as its `Ratings` increases. However, in the scatter plot **Metascore Vs Revenue Scatterplot**, `Revenue` has a logistic growth as `Metascore` increases. `Revenue` reaches a `Revenue` plateau of around ***$100 million*** with a `Metascore` range ***from 70 to 100***.
 
-Therefore, higher `Ratings` (in an exponential sense) and higher `Metascores` (in a logistic sense), will lead to higher `Revenue` and viewerships in the box office.
+Therefore, higher `Ratings` (in an exponential sense) and higher `Metascores` (in a logistic sense), will lead to higher `Revenue` and viewership in the box office.
 
 ## Section 3: Conclusion
 
@@ -321,11 +323,11 @@ The Box office industry is one of the highest-grossing media franchises that can
 
 Directors can earn top `Ratings` if they pick the right `Actors` and the most popular `Genres`. Not to mention, `Directors` can ride on previous success by making high-quality sequels. 
 
-`Ratings` and `Metascores` can greatly conflict with each other. The highest `Ratings` are more prone to conlict with its `Metascores`, but the highest `Metascores` is less likely to conflict with its `Ratings`.
+`Ratings` and `Metascores` can greatly conflict with each other. The highest `Ratings` are more prone to conflict with its `Metascores`, but the highest `Metascores` is less likely to conflict with its `Ratings`.
 
 The length of a movie i.e. a movie's `Runtime` can affect the `Rating` and `Metascore` of the movie. Normal reviewers' `Ratings` steadily increases as the `Runtime` increases, while critics highly prefer a `Runtime`  of **150 minutes** over a `Runtime` of **100 minutes**.
 
-During the first week of a movie’s premiere, `Ratings` and `Metascores` are distributed and can greatly affect the box office success and `Revenue` of a movie. `Ratings` cause an exponetial growth for a movie's `Revenue`, while `Metascores` can cause a logistic growth for a movie's `Revenue`. 
+During the first week of a movie’s premiere, `Ratings` and `Metascores` are distributed and can greatly affect the box office success and `Revenue` of a movie. `Ratings` cause an exponential growth for a movie's `Revenue`, while `Metascores` can cause a logistic growth for a movie's `Revenue`. 
 
 A movie's `Rating`, `Director`, `Actors`, `Genre`, `Metascore`, `Runtime`, and `Revenue` play a direct role for a movie's success and can increase positive feedback. However, some of these factors can create biasness that deter the integrity of the `Rating` and `Metascore`. 
 
