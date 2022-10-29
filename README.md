@@ -1,4 +1,4 @@
-# Final Project for Intro to Data Science: IMDB Movies Data Analysis
+# IMDB Movies Data Analysis with Supervised Learning
 
 ## Spring 2020
 
