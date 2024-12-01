@@ -1,4 +1,4 @@
-# IMDB Movies Data Analysis with Supervised Learning
+# IMDB Movie Ratings Bias Data Analysis Project
 
 ## Spring 2020
 
