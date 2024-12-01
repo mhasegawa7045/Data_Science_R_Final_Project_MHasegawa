@@ -1,4 +1,4 @@
-# IMDB Movie Ratings Bias Data Analysis Project
+# IMDB Movie Bias Ratings Project
 
 ## Spring 2020
 
